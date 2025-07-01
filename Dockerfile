@@ -1,6 +1,6 @@
 # --- Estágio 1: Build ---
 # Usa a imagem completa do OpenJDK com Maven para construir o projeto
-FROM maven:3.9-eclipse-temurin-21 AS builder
+FROM maven:3.9.10-amazoncorretto-24-debian-bookworm AS builder
 
 # Define o diretório de trabalho
 WORKDIR /app
@@ -15,7 +15,7 @@ RUN ./mvnw clean package
 
 # --- Estágio 2: Produção ---
 # Usa uma imagem JRE (Java Runtime Environment) muito menor, apenas para execução
-FROM openjdk:21-jre-slim
+FROM amazoncorretto:24-headful
 
 # Define o diretório de trabalho
 WORKDIR /app

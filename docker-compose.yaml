@@ -1,26 +1,26 @@
 version: '3.8'
 
 services:
-  tabuada:
+  idades:
     build: .
-    command: br.com.basic.CalculadoraTabuada
+    command: com.basic.DiferencaIdades
     stdin_open: true
     tty: true
 
   input:
     build: .
-    command: br.com.basic.InputNomeIdade
+    command: com.basic.InputNomeIdade
     stdin_open: true
     tty: true
 
-  programa3:
+  quadrado:
     build: .
-    command: br.com.basic.Programa3
+    command: com.basic.Quadrado
     stdin_open: true
     tty: true
 
-  programa4:
+  retangulo:
     build: .
-    command: br.com.basic.Programa4
+    command: com.basic.Retangulo
     stdin_open: true
     tty: true
