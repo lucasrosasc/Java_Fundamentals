@@ -1,36 +1,26 @@
 version: '3.8'
 
 services:
-  # Serviço base para construção, não será executado diretamente
-  app:
-    build: .
-    image: basic-app  # Garante que usamos a imagem construída localmente
-
-  # Atalho para o programa de tabuada
   tabuada:
-    image: basic-app
-    # O comando que será executado para este serviço
-    command: br.com.basic.InputNomeIdade
-    stdin_open: true # Equivalente ao -i do docker run
-    tty: true        # Equivalente ao -t do docker run
+    build: .
+    command: br.com.basic.CalculadoraTabuada
+    stdin_open: true
+    tty: true
 
-  # Atalho para o programa de input de dados
   input:
-    image: basic-app
-    command: br.com.basic.Quadrado
+    build: .
+    command: br.com.basic.InputNomeIdade
     stdin_open: true
     tty: true
 
-  # Atalho para o programa 3
   programa3:
-    image: basic-app
-    command: br.com.basic.Retangulo
+    build: .
+    command: br.com.basic.Programa3
     stdin_open: true
     tty: true
 
-  # Atalho para o programa 4
   programa4:
-    image: basic-app
-    command: br.com.basic.DiferencaIdades
+    build: .
+    command: br.com.basic.Programa4
     stdin_open: true
     tty: true

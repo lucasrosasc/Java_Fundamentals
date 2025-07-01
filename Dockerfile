@@ -1,20 +1,27 @@
-# 1. Escolher uma imagem base com Java (JDK) para compilar nosso código
-# A tag "slim" é uma versão mais leve da imagem
-FROM openjdk:11-slim
+# --- Estágio 1: Build ---
+# Usa a imagem completa do OpenJDK com Maven para construir o projeto
+FROM maven:3.9-eclipse-temurin-21 AS builder
 
-# 2. Definir um diretório de trabalho dentro do contêiner
+# Define o diretório de trabalho
 WORKDIR /app
 
-# 3. Copiar o pom.xml e o código-fonte para o contêiner
-# Copiamos tudo do nosso projeto para o diretório /app no contêiner
+# Copia o código-fonte
 COPY . .
 
-# 4. Executar o comando do Maven para compilar o projeto e criar o JAR
-# Este comando irá baixar as dependências e empacotar tudo no JAR
-RUN mvn clean package
+# Constrói o projeto usando o Maven Wrapper para garantir consistência
+RUN chmod +x mvnw
+RUN ./mvnw clean package
 
-# 5. Definir o ponto de entrada (ENTRYPOINT)
-# Este é o comando base que será executado quando o contêiner iniciar.
-# Ele executa o Java, usando o JAR que criamos como classpath (-cp).
-# Note que o comando está incompleto: ele espera um argumento, que será o nome da classe.
-ENTRYPOINT ["java", "-cp", "target/Basic-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+
+# --- Estágio 2: Produção ---
+# Usa uma imagem JRE (Java Runtime Environment) muito menor, apenas para execução
+FROM openjdk:21-jre-slim
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia APENAS o JAR final do estágio de build para a imagem final
+COPY --from=builder /app/target/Basic-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
+
+# Define o ponto de entrada para executar a aplicação
+ENTRYPOINT ["java", "-cp", "app.jar"]
