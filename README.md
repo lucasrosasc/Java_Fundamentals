@@ -1,5 +1,9 @@
 # Java Fundamentals
 
+<p align="center">
+ <img src="./pinguim_piramide.png" alt="Imagem de Pinguim no topo de pirâmide"/>
+</p>
+
 ![Java](https://img.shields.io/badge/Java-21-blue?logo=openjdk)
 ![Maven](https://img.shields.io/badge/Maven-3.9-red?logo=apachemaven)
 ![Docker](https://img.shields.io/badge/Docker-blue?logo=docker)
