@@ -100,3 +100,30 @@ O projeto está configurado com JUnit 5. Para rodar os testes unitários (se hou
 # No Linux ou macOS
 ./mvnw test
 ```
+## Project Structure
+```
+├── .mvn/                   # Pasta do Maven Wrapper
+├── src/
+│   └── main/
+│       └── java/
+│           └── br/
+│               └── com/
+│                   └── basic/
+│                       ├── CalculadoraTabuada.java # Um dos programas executáveis
+│                       ├── InputNomeIdade.java   # Outro programa executável
+│                       ├── Programa3.java        # Classe para futuras implementações
+│                       └── Programa4.java        # Classe para futuras implementações
+├── .dockerignore           # Arquivos a serem ignorados pelo Docker
+├── .gitignore              # Arquivos a serem ignorados pelo Git
+├── docker-compose.yml      # Arquivo de orquestração do Docker Compose
+├── Dockerfile              # Receita para construir a imagem Docker
+├── mvnw                    # Script do Maven Wrapper (Linux/macOS)
+├── mvnw.cmd                # Script do Maven Wrapper (Windows)
+├── pom.xml                 # Arquivo de configuração do projeto Maven
+└── README.md               # Documentação do projeto (este arquivo)
+```
+-----
+
+Feito com ❤️ por **Lucas Rosas**.
+
+[LinkedIn](https://www.linkedin.com/in/lucas-rosas-da-cunha/) | [GitHub](https://github.com/lucasrosasc)

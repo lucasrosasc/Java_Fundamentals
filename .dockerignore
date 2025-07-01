@@ -1,0 +1,17 @@
+# Ignorar a pasta de build do Maven
+target/
+
+# Ignorar logs do Maven
+*.log
+
+# Ignorar arquivos de configuração de IDEs
+.idea/
+*.iml
+.vscode/
+
+# Ignorar o diretório do Git
+.git/
+
+# Ignorar arquivos do sistema operacional
+.DS_Store
+Thumbs.db
